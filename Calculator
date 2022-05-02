@@ -1,0 +1,80 @@
+// Declaring variables that will be used as input and setting equal to null.
+String inputOne = "";
+String inputTwo = "";
+
+// Displaying the title yo.
+Console.WriteLine("Steezys First Fully Functional Console Calculator in C#\r");
+Console.WriteLine("-------------------------------------------------------\n");
+
+// Promting for first input and giving instruction. 
+Console.WriteLine("Type your first number and then press Enter to continue.");
+inputOne = Console.ReadLine();
+
+// Early variable declaration for cleanliness.
+int num1 = 0;
+int num2 = 0;
+float result = 0;
+int operatorChoice = 0;
+
+// Testing if num1 is valid and returning true or false to success.
+bool success = int.TryParse(inputOne, out num1); 
+
+// Testing for successful entrry and proceeding accordingly.
+if (success)  
+{
+    Console.WriteLine("Type your second number and then press Enter to continue.");
+    inputTwo = Console.ReadLine();
+
+    bool success2 = int.TryParse(inputTwo, out num2);
+    if (success2)
+    {
+        Console.WriteLine("Select operation for values by entering corresponding number: \n 1 = +/Addition\n 2 = -/Subtraction\n 3 = / Division\n 4 = */Multiplication");
+
+    }
+    else
+    {
+        Console.WriteLine("Invalid input!");
+    }
+}
+else
+{
+    Console.WriteLine("Invalid input!");
+}
+
+// Assigining the operator choice to the variable. (Which would be the next input).
+string opChoice = Console.ReadLine(); 
+
+// Switch statement for each operator choice.
+switch (opChoice) 
+{
+    case "1":
+        result = num1 + num2;
+        break;
+    case "2":
+        result = num1 - num2;
+        break;
+    case "3":
+        result = num1 / num2;
+        break;
+    case "4":
+        result = num1 * num2;
+        break;
+}
+
+// Testing if operator choice is valid and returning true or false based on result.
+bool success3 = int.TryParse(opChoice, out operatorChoice);
+
+// If statement outputting differently depending on whether success3 is true or false.
+if (success3) 
+{
+    // Printing final result of equation. 
+    Console.WriteLine("The sum of the equation is:" + " " + result); 
+}
+else
+{
+    Console.WriteLine("Invalid operator.");
+}
+
+//End of program, waiting for input.
+Console.ReadKey(); 
+
